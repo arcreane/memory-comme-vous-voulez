@@ -138,6 +138,25 @@ void MainWindow::victory() {
     ui->verticalWidget_2->setDisabled(true);
 }
 
-void MainWindow::restart() {
+void clearLabelsFromWidget(QWidget* widget) {
+    QLayout* layout = widget->layout();
+    if (layout) {
+        QLayoutItem* item;
+        while ((item = layout->takeAt(0))) {
+            if (QWidget* labelWidget = item->widget()) {
+                layout->removeWidget(labelWidget);
+                delete labelWidget;
+            }
+            delete item;
+        }
+        delete layout;
+    }
+}
 
+void MainWindow::restart() {
+    ui->gamestate->setText("");
+    ui->easy->setDisabled(false);
+    ui->medium->setDisabled(false);
+    ui->hard->setDisabled(false);
+    clearLabelsFromWidget(ui->verticalWidget_2);
 }
