@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/logos">
+        <file>logo1.png</file>
+        <file>logo2.png</file>
+        <file>logo3.png</file>
+        <file>logo4.png</file>
+        <file>logo5.png</file>
+        <file>logo6.png</file>
+        <file>logo7.png</file>
+        <file>logo0.png</file>
+    </qresource>
+    <qresource prefix="/cars">
+        <file>car1.png</file>
+        <file>car2.png</file>
+        <file>car3.png</file>
+        <file>car4.png</file>
+        <file>car5.png</file>
+        <file>car6.png</file>
+        <file>car7.png</file>
+        <file>car0.png</file>
+    </qresource>
+    <qresource prefix="/shifters">
+        <file>shifter1.png</file>
+        <file>shifter2.png</file>
+        <file>shifter3.png</file>
+        <file>shifter4.png</file>
+        <file>shifter5.png</file>
+        <file>shifter6.png</file>
+        <file>shifter7.png</file>
+        <file>shifter0.png</file>
+    </qresource>
+    <qresource prefix="/back">
+        <file>moi.png</file>
+    </qresource>
+</RCC>
