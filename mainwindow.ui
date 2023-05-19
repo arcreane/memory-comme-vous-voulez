@@ -55,6 +55,16 @@
            </spacer>
           </item>
           <item>
+           <widget class="QLabel" name="pv">
+            <property name="text">
+             <string>PV : 3</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="facileButton">
             <property name="maximumSize">
              <size>

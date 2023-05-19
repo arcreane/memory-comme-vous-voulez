@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     std::vector<QString> urlList;
     QObject::connect(ui->quitterButton, SIGNAL(clicked()), this, SLOT(close()));
     this->currentCard = NULL;
+    this->pv = 3;
 
     for (int i = 0; i < 8; i++){
         urlList.push_back(QString(":/logos/logo%1.png").arg(i));
@@ -44,8 +45,12 @@ MainWindow::MainWindow(QWidget *parent)
                     this->currentCard = cardList[cardList.size() - 1];
                 } else if(this->currentCard != cardList[cardList.size() - 1]) {
                     this->currentCard = NULL;
+                    this->pv--;
+                    ui->pv->setText("PV : " + QString::number(this->pv));
+                    if (this->pv == 0) {
+                        MainWindow::gameOver();
+                    }
                 }
-
             });
             gridLayout->addWidget(label, row, column);
         }
@@ -58,4 +63,9 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::gameOver()
+{
+    close();
 }
