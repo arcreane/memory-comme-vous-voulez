@@ -28,7 +28,6 @@ void Card::discoveredCard(){
     mMoveAnimation->setEndValue( QRect( QPoint(this->item->pos().x() + 135, this->item->pos().y()), QSize(0, this->item->size().height())));
     mMoveAnimation->start();
     connect( mMoveAnimation, SIGNAL(finished()), this, SLOT(changeDirection()) );
-
 }
 
 

@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     QGridLayout* gridLayout = new QGridLayout();
     std::vector<Card*> cardList;
     std::vector<QString> urlList;
-
+    QObject::connect(ui->quitterButton, SIGNAL(clicked()), this, SLOT(close()));
 
     for (int i = 0; i < 8; i++){
         urlList.push_back(QString(":/logos/logo%1.png").arg(i));
@@ -55,4 +55,3 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
