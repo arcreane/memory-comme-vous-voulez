@@ -14,6 +14,7 @@ class Card : public QObject
         void discoveredCard(Card* currentCard);
         bool checkCard(Card* card);
         void deleteCard();
+        QString imageUrl;
 
     public Q_SLOTS:
         void changeDirection();
@@ -22,10 +23,10 @@ class Card : public QObject
     private:
         int id;
         bool isDiscovered;
-        QPixmap image;
         ClickableLabel* item;
         QPixmap backCard;
-        QString imageUrl;
+
+        QPixmap image;
         Card* currentCard;
 };
 

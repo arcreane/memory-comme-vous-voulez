@@ -55,6 +55,26 @@
            </spacer>
           </item>
           <item>
+           <widget class="QLabel" name="gamestate">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="score">
+            <property name="text">
+             <string>Score :</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="pv">
             <property name="text">
              <string>PV : 3</string>
@@ -65,7 +85,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="facileButton">
+           <widget class="QPushButton" name="easy">
             <property name="maximumSize">
              <size>
               <width>100</width>
@@ -78,7 +98,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="moyenButton">
+           <widget class="QPushButton" name="medium">
             <property name="maximumSize">
              <size>
               <width>100</width>
@@ -91,7 +111,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="difficileButton">
+           <widget class="QPushButton" name="hard">
             <property name="maximumSize">
              <size>
               <width>100</width>
@@ -112,7 +132,7 @@
              <number>50</number>
             </property>
             <item>
-             <widget class="QPushButton" name="jouerButton">
+             <widget class="QPushButton" name="restart">
               <property name="maximumSize">
                <size>
                 <width>100</width>
@@ -123,12 +143,12 @@
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>Jouer</string>
+               <string>Rejouer</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="quitterButton">
+             <widget class="QPushButton" name="leave">
               <property name="maximumSize">
                <size>
                 <width>100</width>
