@@ -25,30 +25,10 @@ void Card::discoveredCard(){
     QPropertyAnimation* mMoveAnimation = new QPropertyAnimation(this->item, "geometry");
     mMoveAnimation->setDuration(500);
     mMoveAnimation->setStartValue( QRect( this->item->pos(), this->item->size()) );
-    mMoveAnimation->setEndValue( QRect( this->item->pos(), QSize(0, this->item->size().height())));
+    mMoveAnimation->setEndValue( QRect( QPoint(this->item->pos().x() + 135, this->item->pos().y()), QSize(0, this->item->size().height())));
     mMoveAnimation->start();
     connect( mMoveAnimation, SIGNAL(finished()), this, SLOT(changeDirection()) );
-//    while(this->item->width() > 200){
-//        this->item->resize(this->item->width() - 5, this->item->height());
-//        this->item->setFixedWidth(this->item->width() - 5);
-//        qInfo() << this->item->width();
-//        std::cout << this->isDiscovered << std::endl;
-//        if(this->isDiscovered == false) {
-//            std::cout << this->isDiscovered << std::endl;
-//            this->item->setPixmap(this->backCard.scaled(this->item->width() - 5, this->item->height()));
-//        } else {
-//            this->item->setPixmap(this->image.scaled(this->item->width() - 5, this->item->height()));
-//        }
 
-//    }
-//    while(this->item->size().width() < maxWidth){
-//        qInfo("2e");
-//        if(this->isDiscovered == false) {
-//            this->item->setPixmap(this->backCard.scaled(this->item->width() + 5, this->item->height()));
-//        } else {
-//            this->item->setPixmap(this->image.scaled(this->item->width() + 5, this->item->height()));
-//        }
-//    }
 }
 
 
@@ -77,7 +57,7 @@ void Card::changeDirection()
     this->item->setVisible(true);
     QPropertyAnimation* mMoveAnimation = new QPropertyAnimation(this->item, "geometry");
     mMoveAnimation->setDuration(500);
-    mMoveAnimation->setStartValue( QRect( this->item->pos(), QSize(0, this->item->size().height())));
-    mMoveAnimation->setEndValue( QRect( this->item->pos(), QSize(265, this->item->size().height())));
+    mMoveAnimation->setStartValue( QRect( QPoint(this->item->pos().x() + 135, this->item->pos().y()), QSize(0, this->item->size().height())));
+    mMoveAnimation->setEndValue( QRect( this->item->pos(), this->item->size()));
     mMoveAnimation->start();
 }
