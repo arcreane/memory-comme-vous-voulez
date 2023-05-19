@@ -3,7 +3,6 @@
 #include <QDebug>
 #include <unistd.h>
 
-
 Card::Card(QString url, int idCard, ClickableLabel* item)
 {
     this->isDiscovered= false;
@@ -18,28 +17,31 @@ Card::Card(QString url, int idCard, ClickableLabel* item)
     QPixmap pixmapCard(backCard);
     this->backCard = pixmapCard;
     this->item->setPixmap(pixmapCard);
+    this->item->setScaledContents(true);
 }
 
-void Card::discoveredCard(){
+void Card::discoveredCard(Card* currentCard){
+    if (this->isDiscovered == true && this == currentCard) {
+        return;
+    }
+    this->currentCard = currentCard;
     int maxWidth = this->item->size().width();
     QPropertyAnimation* mMoveAnimation = new QPropertyAnimation(this->item, "geometry");
     mMoveAnimation->setDuration(500);
     mMoveAnimation->setStartValue( QRect( this->item->pos(), this->item->size()) );
     mMoveAnimation->setEndValue( QRect( QPoint(this->item->pos().x() + 135, this->item->pos().y()), QSize(0, this->item->size().height())));
     mMoveAnimation->start();
-    connect( mMoveAnimation, SIGNAL(finished()), this, SLOT(changeDirection()) );
+    connect(mMoveAnimation, SIGNAL(finished()), this, SLOT(changeDirection()));
 }
 
-
-
-bool Card::checkCard(Card card){
-    if (card.imageUrl == this->imageUrl)
+bool Card::checkCard(Card* card){
+    if (card->imageUrl == this->imageUrl)
         return true;
     return false;
 }
 
 void Card::deleteCard() {
-    this->item->setPixmap(QPixmap());
+    this->item->setDisabled(true);
 }
 
 void Card::changeDirection()
@@ -59,4 +61,18 @@ void Card::changeDirection()
     mMoveAnimation->setStartValue( QRect( QPoint(this->item->pos().x() + 135, this->item->pos().y()), QSize(0, this->item->size().height())));
     mMoveAnimation->setEndValue( QRect( this->item->pos(), this->item->size()));
     mMoveAnimation->start();
+    connect(mMoveAnimation, SIGNAL(finished()), this, SLOT(flipCard()));
+}
+
+void Card::flipCard()
+{
+    if(this->currentCard != NULL) {
+        if (this->checkCard(this->currentCard)){
+            this->currentCard->deleteCard();
+            this->deleteCard();
+        } else {
+            this->currentCard->discoveredCard(NULL);
+            this->discoveredCard(NULL);
+        }
+    }
 }

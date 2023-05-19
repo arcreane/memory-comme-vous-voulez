@@ -11,12 +11,13 @@ class Card : public QObject
 
     public:
         Card(QString url, int id, ClickableLabel* item);
-        void discoveredCard();
-        bool checkCard(Card card);
+        void discoveredCard(Card* currentCard);
+        bool checkCard(Card* card);
         void deleteCard();
 
-    public slots:
+    public Q_SLOTS:
         void changeDirection();
+        void flipCard();
 
     private:
         int id;
@@ -25,6 +26,7 @@ class Card : public QObject
         ClickableLabel* item;
         QPixmap backCard;
         QString imageUrl;
+        Card* currentCard;
 };
 
 #endif // CARD_H
